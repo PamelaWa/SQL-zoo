@@ -44,7 +44,7 @@ SELECT name,
 FROM world
 WHERE continent = 'Europe'
 
---6.Which countries have a GDP greater than every country in Europe? [Give the name only.] (Some countries may have NULL gdp values)
+--*6.Which countries have a GDP greater than every country in Europe? [Give the name only.] (Some countries may have NULL gdp values)
 SELECT name
 FROM world
 WHERE gdp > ALL
@@ -52,15 +52,38 @@ WHERE gdp > ALL
        FROM world
        WHERE gdp > 0 AND continent = 'Europe')
 
+--*7.Find the largest country (by area) in each continent, show the continent, the name and the area:
+SELECT continent, name, area 
+FROM world x
+WHERE area >= ALL
+    (SELECT area 
+     FROM world y
+        WHERE y.continent = x.continent AND population>0)
+        
+SELECT continent, name, area 
+FROM world
+WHERE area IN (SELECT MAX(area) 
+                  FROM world 
+                 GROUP BY continent);
 
+--*8.List each continent and the name of the country that comes first alphabetically.
+select continent, name from world x
+where name = (select name 
+                  from world y 
+                  where  x.continent =  y.continent 
+                  order by name asc 
+                  limit 1)
 
+SELECT continent, MIN(name) AS name
+FROM world 
+GROUP BY continent
+ORDER by continent
 
-
-
-
-
-
-
+SELECT continent, name FROM world x
+WHERE name <= ALL
+  (SELECT name FROM world y WHERE y.continent=x.continent)
+  
+--
 
 
 
