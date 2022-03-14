@@ -34,7 +34,7 @@ FROM goal
 JOIN eteam ON (id = teamid)
 WHERE gtime<=10
 
-
+--
 
 
 
