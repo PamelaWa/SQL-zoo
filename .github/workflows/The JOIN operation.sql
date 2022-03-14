@@ -28,8 +28,11 @@ FROM game
 JOIN goal ON (game.id = goal.matchid)
 WHERE player LIKE 'Mario%'
 
-
-
+--5.The table eteam gives details of every national team including the coach. You can JOIN goal to eteam using the phrase goal JOIN eteam on teamid=id
+SELECT player, teamid, coach, gtime
+FROM goal 
+JOIN eteam ON (id = teamid)
+WHERE gtime<=10
 
 
 
