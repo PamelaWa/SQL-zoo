@@ -34,8 +34,9 @@ FROM goal
 JOIN eteam ON (id = teamid)
 WHERE gtime<=10
 
---
-
+--6.Notice that because id is a column name in both game and eteam you must specify eteam.id instead of just id
+--List the dates of the matches and the name of the team in which 'Fernando Santos' was the team1 coach.
+ 
 
 
 
