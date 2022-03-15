@@ -36,7 +36,35 @@ WHERE gtime<=10
 
 --6.Notice that because id is a column name in both game and eteam you must specify eteam.id instead of just id
 --List the dates of the matches and the name of the team in which 'Fernando Santos' was the team1 coach.
- 
+SELECT mdate, teamname
+FROM game
+JOIN eteam ON (team1 = eteam.id)
+WHERE coach= 'Fernando Santos' 
+
+--7.List the player for every goal scored in a game where the stadium was 'National Stadium, Warsaw'
+SELECT player
+FROM game
+JOIN goal ON (game.id = goal.matchid)
+WHERE stadium = 'National Stadium, Warsaw'
+
+--8.The example query shows all goals scored in the Germany-Greece quarterfinal.Instead show the name of all players who scored a goal against Germany.
+SELECT DISTINCT player
+FROM game 
+JOIN goal ON goal.matchid = game.id 
+WHERE (team1='GER' OR team2='GER') 
+AND teamid<>'GER'
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
