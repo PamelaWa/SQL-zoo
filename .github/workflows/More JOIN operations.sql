@@ -81,10 +81,24 @@ HAVING COUNT(*) > 1
 ORDER BY COUNT(*) DESC
 LIMIT 2
 
+--*12.List the film title and the leading actor for all of the films 'Julie Andrews' played in.
+SELECT DISTINCT m.title, a.name
+FROM (SELECT movie.*
+      FROM movie
+      JOIN casting
+      ON casting.movieid = movie.id
+      JOIN actor
+      ON actor.id = casting.actorid
+      WHERE actor.name = 'Julie Andrews') AS m
+JOIN (SELECT actor.*, casting.movieid AS movieid
+      FROM actor
+      JOIN casting
+      ON casting.actorid = actor.id
+      WHERE casting.ord = 1) as a
+ON m.id = a.movieid
+ORDER BY m.title;
+
 --
-
-
-
 
 
 
