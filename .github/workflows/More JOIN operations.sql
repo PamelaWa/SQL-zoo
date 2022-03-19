@@ -99,9 +99,15 @@ ON m.id = a.movieid
 ORDER BY m.title;
 
 --13.Obtain a list, in alphabetical order, of actors who've had at least 15 starring roles.
+SELECT actor.name
+FROM actor 
+JOIN casting
+ON actor.id = casting.actorid
+WHERE ord = 1
+GROUP BY name
+HAVING COUNT(movieid) >= 15
 
-
-
+--14.List the films released in the year 1978 ordered by the number of actors in the cast, then by title.
 
 
 
