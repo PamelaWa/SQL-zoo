@@ -98,7 +98,7 @@ JOIN (SELECT actor.*, casting.movieid AS movieid
 ON m.id = a.movieid
 ORDER BY m.title;
 
---13.Obtain a list, in alphabetical order, of actors who've had at least 15 starring roles.
+--*13.Obtain a list, in alphabetical order, of actors who've had at least 15 starring roles.
 SELECT actor.name
 FROM actor 
 JOIN casting
@@ -107,7 +107,7 @@ WHERE ord = 1
 GROUP BY name
 HAVING COUNT(movieid) >= 15
 
---14.List the films released in the year 1978 ordered by the number of actors in the cast, then by title.
+--*14.List the films released in the year 1978 ordered by the number of actors in the cast, then by title.
 SELECT movie.title, COUNT(actorid)
 FROM movie JOIN casting ON movie.id = casting.movieid
 WHERE movie.yr = 1978
