@@ -68,15 +68,3 @@ join route c on stops.id=c.stop
 join route d on c.company=d.company AND c.num=d.num
 where b.stop =(select id from stops where name= 'Craiglockhart')
 and d.stop =(select id from stops where name= 'Lochend')
-
-
-
-
-
-
-
-
-
-
-
-
