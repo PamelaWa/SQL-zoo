@@ -58,7 +58,7 @@ FROM route a JOIN route b ON
   JOIN stops stopb ON (b.stop=stopb.id)
 WHERE stopa.name='Craiglockhart' 
 
---10.Find the routes involving two buses that can go from Craiglockhart to Lochend.
+--*10.Find the routes involving two buses that can go from Craiglockhart to Lochend.
 --Show the bus no. and company for the first bus, the name of the stop for the transfer,
 --and the bus no. and company for the second bus.
 SELECT a.num, a.company, stops.name, c.num, c.company
